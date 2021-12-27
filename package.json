@@ -1,0 +1,40 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "npm install",
+    "start": "forever server.js",
+    "watch": "forever -w server.js",
+    "lint": "eslint ."
+  },
+  "engines": {
+    "node": "17.x"
+    },
+    
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zicio/Server.git"
+  },
+  "author": "Zicio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Zicio/Server/issues"
+  },
+  "homepage": "https://github.com/Zicio/Server#readme",
+  "dependencies": {
+    "forever": "^4.0.1",
+    "koa": "^2.13.4",
+    "koa-body": "^4.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.5.0",
+    "eslint-config-koa": "^2.0.2",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-standard": "^5.0.0"
+  }
+}
