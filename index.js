@@ -3,7 +3,7 @@ const Koa = require('koa');
 const app = new Koa();
 // const cors = require('koa2-cors');
 
-const tickets = [];
+const tickets = [1, 2];
 
 // app.use(async(ctx, next) => {
 //   const origin = ctx.request.get('Origin');
