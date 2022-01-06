@@ -1,7 +1,7 @@
 const http = require('http');
 const Koa = require('koa');
 const app = new Koa();
-const cors = require('koa2-cors');
+// const cors = require('koa2-cors');
 
 const tickets = [];
 
@@ -43,14 +43,14 @@ const tickets = [];
 //   }
 // });
 
-app.use(cors());
+// app.use(cors());
 
 app.use(async ctx => {
   const { method } = ctx.request.querystring;
 
-  // ctx.response.set({
-  //   'Access-Control-Allow-Origin': '*'
-  // });
+  ctx.response.set({
+    'Access-Control-Allow-Origin': '*'
+  });
 
   switch (method) {
     case 'allTickets':
