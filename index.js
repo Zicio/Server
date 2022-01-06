@@ -48,9 +48,9 @@ app.use(cors());
 app.use(async ctx => {
   const { method } = ctx.request.querystring;
 
-  ctx.response.set({
-    'Access-Control-Allow-Origin': '*'
-  });
+  // ctx.response.set({
+  //   'Access-Control-Allow-Origin': '*'
+  // });
 
   switch (method) {
     case 'allTickets':
