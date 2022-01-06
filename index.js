@@ -4,6 +4,7 @@ const app = new Koa();
 // const cors = require('koa2-cors');
 
 const tickets = [1, 2];
+console.log(tickets);
 
 // app.use(async(ctx, next) => {
 //   const origin = ctx.request.get('Origin');
@@ -56,7 +57,6 @@ app.use(async ctx => {
     case 'allTickets':
       ctx.response.body = tickets;
       return;
-      // TODO: обработка остальных методов
     default:
       ctx.response.status = 404;
   }
