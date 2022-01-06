@@ -11,8 +11,7 @@
   },
   "engines": {
     "node": "17.x"
-    },
-    
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Zicio/Server.git"
@@ -26,7 +25,8 @@
   "dependencies": {
     "forever": "^4.0.1",
     "koa": "^2.13.4",
-    "koa-body": "^4.2.0"
+    "koa-body": "^4.2.0",
+    "koa2-cors": "^2.0.6"
   },
   "devDependencies": {
     "eslint": "^8.5.0",
