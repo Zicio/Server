@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "forever index.js",
-    "watch": "forever -w index.js",
+    "start": "forever './index.js'",
+    "watch": "forever -w './index.js'",
     "lint": "eslint ."
   },
   "engines": {
