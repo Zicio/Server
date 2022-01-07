@@ -1,13 +1,13 @@
-const http = require('http');
+// const http = require('http');
 const Koa = require('koa');
 const koaBody = require('koa-body');
-const cors = require('koa-cors');
+const cors = require('@koa/cors');
 
 const app = new Koa();
 app.use(cors());
 
 // backend
-const backend = require('./server_backend');
+// const backend = require('./server_backend');
 
 app.use(koaBody({
   urlencoded: true
