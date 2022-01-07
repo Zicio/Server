@@ -5,12 +5,9 @@
   "main": "index.js",
   "scripts": {
     "prestart": "npm install",
-    "start": "forever -minUptime 5000 --spinSleepTime 3000 index.js",
-    "watch": "forever -minUptime 5000 --spinSleepTime 3000 -w index.js",
+    "start": "forever index.js",
+    "watch": "forever -w index.js",
     "lint": "eslint ."
-  },
-  "engines": {
-    "node": "17.x"
   },
   "repository": {
     "type": "git",
