@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prestart": "npm install",
     "start": "forever index.js",
     "watch": "forever -w index.js",
     "lint": "eslint ."
   },
+  "engines": {
+    "node": "11.x"
+},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Zicio/Server.git"
