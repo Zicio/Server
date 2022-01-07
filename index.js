@@ -21,7 +21,7 @@ const tickets = [
 
 router.get('?method=allTickets', async(ctx, next) => {
   ctx.response.body = tickets;
-  ctx.response.set({ 'Access-Control-Allow-Origin': '*' });
+  // ctx.response.set({ 'Access-Control-Allow-Origin': '*' });
 });
 
 app.use(router.routes());
