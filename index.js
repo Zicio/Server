@@ -29,12 +29,14 @@ app.use(async ctx => {
   const qry = ctx.request.query;
   // console.log('query=', qry);
   /* handlers */
+
+  ctx.response.set({ 'Access-Control-Allow-Origin': '*' });
+
   switch (route) {
     // ---------------------
     case 'allTickets':
       if (method === 'GET') {
         ctx.response.body = tickets;
-        ctx.response.set({ 'Access-Control-Allow-Origin': '*' });
         return;
       }
     // ---------------------
@@ -68,7 +70,6 @@ app.use(async ctx => {
     // ---------------------
     default:
       ctx.response.status = 404;
-      ctx.response.set({ 'Access-Control-Allow-Origin': '*' });
   }
 });
 
