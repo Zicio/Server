@@ -27,4 +27,5 @@ router.get('?method=allTickets', async(ctx, next) => {
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-app.listen(7070);
+const port = process.env.PORT || 7070;
+app.listen(port);
