@@ -6,7 +6,7 @@ const app = new Koa();
 app.use(cors());
 
 app.use(koaBody({
-  urlencoded: true,
+  urlencoded: true
 }));
 
 /* data */
