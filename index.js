@@ -37,21 +37,21 @@ app.use(async ctx => {
         return;
       }
     // ---------------------
-    // case 'ticketById':
-    //   if (method === 'GET') {
-    //     const paramID = qry.id;
-    //     // console.log('id=', paramID);
-    //     const filteredTickets = tickets.filter(item => {
-    //       if (item.id === Number(paramID)) {
-    //         return true;
-    //       }
-    //     });
-    //     // console.log('filteredTickets=', filteredTickets);
-    //     ctx.response.body = filteredTickets;
-    //     ctx.response.set({ 'Access-Control-Allow-Origin': '*' });
-    //     return;
-    //   }
-    // // ---------------------
+    case 'ticketById':
+      if (method === 'GET') {
+        const paramID = qry.id;
+        // console.log('id=', paramID);
+        const filteredTickets = tickets.filter(item => {
+          if (item.id === Number(paramID)) {
+            return true;
+          }
+        });
+        // console.log('filteredTickets=', filteredTickets);
+        ctx.response.body = filteredTickets;
+        ctx.response.set({ 'Access-Control-Allow-Origin': '*' });
+        return;
+      }
+    // ---------------------
     // case 'createTicket':
     //   if (method === 'POST') {
     //     const body = ctx.request.body;
