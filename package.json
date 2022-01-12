@@ -9,8 +9,8 @@
     "lint": "eslint ."
   },
   "engines": {
-    "node": "11.x"
-},
+    "node": "17.x"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Zicio/Server.git"
@@ -26,7 +26,8 @@
     "@koa/router": "^10.1.1",
     "forever": "^4.0.1",
     "koa": "^2.13.4",
-    "koa-body": "^4.2.0"
+    "koa-body": "^4.2.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "eslint": "^8.5.0",
