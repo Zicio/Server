@@ -24,6 +24,7 @@ const format = date => {
   if (date < 10) {
     date = '0' + date;
   }
+  return date;
 };
 
 app.use(async ctx => {
