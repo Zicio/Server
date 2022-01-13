@@ -13,11 +13,11 @@ app.use(koaBody({
 
 /* data */
 const tickets = [
-  { id: 1, name: 'AAA', description: 'Подробное описание', status: true, created: '10.03.19 08:40' },
-  { id: 2, name: 'BBB', description: 'Подробное описание', status: true, created: '10.03.19 08:57' },
-  { id: 3, name: 'CCC', description: 'Подробное описание', status: false, created: '10.03.19 08:20' },
-  { id: 4, name: 'DDD', description: 'Подробное описание', status: true, created: '10.03.19 08:37' },
-  { id: 5, name: 'EEE', description: 'Подробное описание', status: false, created: '10.03.19 08:58' }
+  { id: '1', name: 'AAA', description: 'Подробное описание', status: true, created: '10.03.19 08:40' },
+  { id: '2', name: 'BBB', description: 'Подробное описание', status: true, created: '10.03.19 08:57' },
+  { id: '3', name: 'CCC', description: 'Подробное описание', status: false, created: '10.03.19 08:20' },
+  { id: '4', name: 'DDD', description: 'Подробное описание', status: true, created: '10.03.19 08:37' },
+  { id: '5', name: 'EEE', description: 'Подробное описание', status: false, created: '10.03.19 08:58' }
 ];
 
 app.use(async ctx => {
@@ -43,7 +43,7 @@ app.use(async ctx => {
       if (method === 'GET') {
         const paramID = qry.id;
         const filteredTickets = tickets.filter(item => {
-          if (item.id === Number(paramID)) {
+          if (item.id === paramID) {
             return true;
           }
         });
