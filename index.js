@@ -93,7 +93,7 @@ app.use(async ctx => {
       if (method === 'POST') {
         const body = ctx.request.body;
         console.log('post body=', body);
-        const paramID = body.id;
+        const paramID = ctx.request.id;
         const changedTicketIndex = tickets.findIndex(item => item.id === paramID);
         const newTicket = { id: body.id, name: body.name, description: body.description, status: body.status, created: body.created};
         tickets.splice(changedTicketIndex, 1, newTicket);
