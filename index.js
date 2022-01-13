@@ -81,7 +81,7 @@ app.use(async ctx => {
         console.log('post body=', body);
         const { v4: uuidv4 } = require('uuid');
         const newID = uuidv4();
-        const newTicket = { id: newID, name: body.name, description: body.description, status: false, created: `${getDate().date}.${getDate().month}.${getDate().year} ${getDate().hour}:${getDate().minute}` };
+        const newTicket = { id: newID, name: body.name, description: body.description, status: false, created: `${getDate().day}.${getDate().month}.${getDate().year} ${getDate().hour}:${getDate().minute}` };
         console.log('newTicket=', newTicket);
         tickets.push(newTicket);
       }
