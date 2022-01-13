@@ -59,7 +59,12 @@ app.use(async ctx => {
         const { v4: uuidv4 } = require('uuid');
         const newID = uuidv4();
         const date = new Date();
-        const newTicket = { id: newID, name: body.name, description: body.description, status: false, created: `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}` };
+        let month = date.getMonth() + 1;
+        if (month < 10) {
+          month = '0' + month;
+        }
+        const year = +date.getFullYear().toString().slice(2);
+        const newTicket = { id: newID, name: body.name, description: body.description, status: false, created: `${date.getDate()}.${month}.${year} ${date.getHours()}:${date.getMinutes()}` };
         console.log('newTicket=', newTicket);
         tickets.push(newTicket);
       }
