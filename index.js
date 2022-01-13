@@ -103,7 +103,7 @@ app.use(async ctx => {
       if (method === 'POST') {
         const body = ctx.request.body;
         console.log('post body=', body);
-        const paramID = ctx.request.id;
+        const paramID = qry.id;
         const changedTicketIndex = tickets.findIndex(item => item.id === paramID);
         tickets[changedTicketIndex].name = body.name;
         tickets[changedTicketIndex].description = body.description;
