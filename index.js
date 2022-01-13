@@ -89,6 +89,19 @@ app.use(async ctx => {
         return;
       }
     // ---------------------
+    case 'changeTicket':
+      if (method === 'POST') {
+        const body = ctx.request.body;
+        console.log('post body=', body);
+        const paramID = body.id;
+        const changedTicketIndex = tickets.findIndex(item => item.id === paramID);
+        const newTicket = { id: body.id, name: body.name, description: body.description, status: body.status, created: body.created};
+        tickets.splice(changedTicketIndex, 1, newTicket);
+        ctx.response.body = 'OK';
+        ctx.response.set({ 'Access-Control-Allow-Origin': '*' });
+        return;
+      }
+    // ---------------------
     default:
       ctx.response.status = 404;
       ctx.response.set({ 'Access-Control-Allow-Origin': '*' });
