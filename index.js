@@ -31,7 +31,10 @@ const getDate = () => {
   const date = new Date();
   const month = format(date.getMonth() + 1);
   const day = format(date.getDate());
-  const hour = format(date.getHours() + 4);
+  let hour = format(date.getHours() + 4);
+  if (hour === 24) {
+    hour = 0;
+  }
   const minute = format(date.getMinutes());
   const year = +date.getFullYear().toString().slice(2);
   return {
@@ -107,7 +110,7 @@ app.use(async ctx => {
         const changedTicketIndex = tickets.findIndex(item => item.id === paramID);
         tickets[changedTicketIndex].name = body.name;
         tickets[changedTicketIndex].description = body.description;
-        tickets[changedTicketIndex].created = `${getDate().date}.${getDate().month}.${getDate().year} ${getDate().hour}:${getDate().minute}`;
+        tickets[changedTicketIndex].created = `${getDate().day}.${getDate().month}.${getDate().year} ${getDate().hour}:${getDate().minute}`;
         ctx.response.body = 'OK';
         ctx.response.set({ 'Access-Control-Allow-Origin': '*' });
         return;
