@@ -27,6 +27,22 @@ const format = date => {
   return date;
 };
 
+const getDate = () => {
+  const date = new Date();
+  const month = format(date.getMonth() + 1);
+  const day = format(date.getDate());
+  const hour = format(date.getHours() + 4);
+  const minute = format(date.getMinutes());
+  const year = +date.getFullYear().toString().slice(2);
+  return {
+    month,
+    day,
+    hour,
+    minute,
+    year
+  };
+};
+
 app.use(async ctx => {
   /* query information */
   const method = ctx.request.method;
@@ -65,13 +81,7 @@ app.use(async ctx => {
         console.log('post body=', body);
         const { v4: uuidv4 } = require('uuid');
         const newID = uuidv4();
-        const date = new Date();
-        const month = format(date.getMonth() + 1);
-        const day = format(date.getDate());
-        const hour = format(date.getHours() + 4);
-        const minute = format(date.getMinutes());
-        const year = +date.getFullYear().toString().slice(2);
-        const newTicket = { id: newID, name: body.name, description: body.description, status: false, created: `${day}.${month}.${year} ${hour}:${minute}` };
+        const newTicket = { id: newID, name: body.name, description: body.description, status: false, created: `${getDate().date}.${getDate().month}.${getDate().year} ${getDate().hour}:${getDate().minute}` };
         console.log('newTicket=', newTicket);
         tickets.push(newTicket);
       }
@@ -95,8 +105,9 @@ app.use(async ctx => {
         console.log('post body=', body);
         const paramID = ctx.request.id;
         const changedTicketIndex = tickets.findIndex(item => item.id === paramID);
-        const newTicket = { id: body.id, name: body.name, description: body.description, status: body.status, created: body.created};
-        tickets.splice(changedTicketIndex, 1, newTicket);
+        tickets[changedTicketIndex].name = body.name;
+        tickets[changedTicketIndex].description = body.description;
+        tickets[changedTicketIndex].created = `${getDate().date}.${getDate().month}.${getDate().year} ${getDate().hour}:${getDate().minute}`;
         ctx.response.body = 'OK';
         ctx.response.set({ 'Access-Control-Allow-Origin': '*' });
         return;
