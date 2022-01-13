@@ -79,6 +79,16 @@ app.use(async ctx => {
       ctx.response.set({ 'Access-Control-Allow-Origin': '*' });
       return;
     // ---------------------
+    case 'deleteTicket':
+      if (method === 'GET') {
+        const paramID = qry.id;
+        const deletedTicketIndex = tickets.findIndex(item => item.id === paramID);
+        tickets.splice(deletedTicketIndex, 1);
+        ctx.response.body = 'OK';
+        ctx.response.set({ 'Access-Control-Allow-Origin': '*' });
+        return;
+      }
+    // ---------------------
     default:
       ctx.response.status = 404;
       ctx.response.set({ 'Access-Control-Allow-Origin': '*' });
