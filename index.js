@@ -47,15 +47,10 @@ const getDate = () => {
 };
 
 app.use(async ctx => {
-  /* query information */
   const method = ctx.request.method;
-  console.log('method=', method);
   const route = ctx.request.query.method;
-  console.log('route=', route);
   const qry = ctx.request.query;
-  console.log('query=', qry);
 
-  /* handlers */
   switch (route) {
     // ---------------------
     case 'allTickets':
@@ -81,7 +76,6 @@ app.use(async ctx => {
     case 'createTicket':
       if (method === 'POST') {
         const body = ctx.request.body;
-        console.log('post body=', body);
         const { v4: uuidv4 } = require('uuid');
         const newID = uuidv4();
         const newTicket = { id: newID, name: body.name, description: body.description, status: false, created: `${getDate().day}.${getDate().month}.${getDate().year} ${getDate().hour}:${getDate().minute}` };
@@ -105,12 +99,19 @@ app.use(async ctx => {
     case 'changeTicket':
       if (method === 'POST') {
         const body = ctx.request.body;
-        console.log('post body=', body);
         const paramID = qry.id;
         const changedTicketIndex = tickets.findIndex(item => item.id === paramID);
         tickets[changedTicketIndex].name = body.name;
         tickets[changedTicketIndex].description = body.description;
         tickets[changedTicketIndex].created = `${getDate().day}.${getDate().month}.${getDate().year} ${getDate().hour}:${getDate().minute}`;
+        ctx.response.body = 'OK';
+        ctx.response.set({ 'Access-Control-Allow-Origin': '*' });
+        return;
+      }
+      if (method === 'GET') {
+        const paramID = qry.id;
+        const changedTicketIndex = tickets.findIndex(item => item.id === paramID);
+        tickets[changedTicketIndex].status = !tickets[changedTicketIndex].status;
         ctx.response.body = 'OK';
         ctx.response.set({ 'Access-Control-Allow-Origin': '*' });
         return;
